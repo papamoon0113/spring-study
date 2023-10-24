@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<context:component-scan base-package="exam2"/>
+
+	<bean id = "message0" class="java.lang.String">
+		<constructor-arg value="안녕히 주무세요."/>
+	</bean>
+	<bean id = "message1" class="java.lang.String">
+		<constructor-arg value="좋은 아침입니다."/>
+	</bean>
+	<bean id = "message2" class="java.lang.String">
+		<constructor-arg value="즐거운 오후되세요."/>
+	</bean>
+	<bean id = "message3" class="java.lang.String">
+		<constructor-arg value="편안한 저녁되세요."/>
+	</bean>
+
+	<bean id="dateBean" class="java.time.LocalDateTime" factory-method="now" scope="prototype"/>
+	<bean id="hourNow" class="int" factory-bean="dateBean" factory-method="getHour"/>
+</beans>
+
+

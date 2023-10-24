@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>스프링 MVC 실습</title>
+</head>
+<body>
+  <h1>도서 게시판</h1>
+  <hr/>
+  <div >
+    <a th:each="key:${menu.keySet()}" th:href="${menu.get(key)}">[[${key}]]<br></a>
+  </div>
+  <hr/>
+  <ul>
+    <th:block th:if="${response != null}" th:each="dto:${response}">
+      <li th:text="${dto}"></li>
+    </th:block>
+  </ul>
+  <h1>도서 정보 입력</h1>
+  <hr/>
+  <form method = "POST" action = "/book">
+    <input type="text" name="title" placeholder="도서명 입력" required><br>
+    <input type="number" name="price" placeholder="가격 입력" required><br>
+    <input type="radio" id="b01" name="kind" value="b01">
+    <label for="b01">프로그래밍 언어</label>
+    <input type="radio" id="b02" name="kind" value="b02">
+    <label for="b02">웹 프로그래밍</label>
+    <input type="radio" id="b03" name="kind" value="b03">
+    <label for="b03">빅데이터</label>
+    <input type="radio" id="b04" name="kind" value="b04">
+    <label for="b04">데이터베이스</label>
+    <input type="radio" id="b05" name="kind" value="b05">
+    <label for="b05">인프라</label>
+    <input type="submit" value="저장">
+  </form>
+  <h5 th:if="${result != null}" th:text="|책이 정상적으로 등록되었습니다.|"></h5>
+</body>
+</html>

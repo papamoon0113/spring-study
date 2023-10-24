@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body style="text-align : center">
+  <h1>로또 결과</h1>
+  <hr/>
+  <h2 th:if="|${dto.result == 'success'}|">추카추카!</h2>
+  <h2 th:if="${dto.result == 'fail'}">아쉽네요 다음 기회를...</h2>
+  <h2 th:if="${dto.result == 'over'}">로또 응모는 낙첨된 경우에 한하여 3번까지만 응모할 수 있습니다.<br/>브라우저를 재기동한 후 다시 실시해주세요.</h2>
+  <img th:src="|${dto.imgName}|"/>
+  <br/>
+  <a th:if="${dto.result == 'fail'}" th:href="${reqinfo}">재시도</a>
+  <hr/>
+</body>
+</html>
